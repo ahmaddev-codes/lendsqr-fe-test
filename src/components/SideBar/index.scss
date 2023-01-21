@@ -1,0 +1,112 @@
+@import "../../variables.scss";
+@import "../../mixins.scss";
+
+.sidebar {
+  position: absolute;
+  font-family: $workSans;
+  font-size: 0.875rem;
+  color: $textColor;
+  width: auto;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  padding-top: 7rem;
+  overflow-y: scroll;
+  box-shadow: $shadow;
+  border: $border;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+    padding: 1rem 2rem;
+
+    svg {
+      font-size: 2rem;
+    }
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+    padding: 0 2rem;
+    opacity: 0.6;
+    border-left: 3px solid transparent;
+    transition: all 200ms ease;
+
+    &:hover {
+      background-color: $buttonHover;
+      border-left: 3px solid $buttonColor;
+      opacity: 1;
+    }
+  }
+
+  &__content {
+    margin-top: 2rem;
+
+    .list-header {
+      padding-left: 2rem;
+      font-weight: 600;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      width: 100%;
+      padding: 0 2rem;
+      opacity: 0.6;
+      border-left: 3px solid transparent;
+      transition: all 200ms ease;
+
+      &:hover {
+        background-color: $buttonHover;
+        border-left: 3px solid $buttonColor;
+        opacity: 1;
+      }
+
+      p {
+        user-select: none;
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0 2rem;
+    border-left: 3px solid transparent;
+    transition: all 200ms ease;
+
+    &:hover {
+      background-color: $logOutBg;
+      border-left: 3px solid $blacklisted;
+    }
+
+    p {
+      user-select: none;
+    }
+  }
+
+  .version {
+    padding: 0 2rem;
+  }
+}
+
+#space {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid $divider;
+}
+
+#active {
+  background-color: $buttonHover;
+  border-left: 3px solid $buttonColor;
+  opacity: 1;
+}
