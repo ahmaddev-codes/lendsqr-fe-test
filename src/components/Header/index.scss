@@ -10,7 +10,7 @@
   color: $textColor;
   padding: 1rem 2rem;
   width: 100%;
-  z-index: 3;
+  z-index: 5;
   box-shadow: $shadow;
   border: $border;
 
@@ -31,7 +31,7 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      width: 60%;
+      width: 100%;
 
       input {
         position: absolute;
