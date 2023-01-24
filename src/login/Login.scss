@@ -157,20 +157,16 @@
     margin-top: 1rem;
     margin-bottom: -1rem;
     transition: all 200ms ease;
-
-    &:hover {
-      font-weight: 600;
-    }
   }
 
-  button {
+  .link {
     width: 100%;
     height: auto;
     font-size: 1rem;
     font-family: $avenirNext;
-    letter-spacing: 0.1rem;
     background: $buttonColor;
     color: $white;
+    text-align: center;
     margin-top: 1rem;
     border-color: $buttonColor;
     border-radius: 5px;
