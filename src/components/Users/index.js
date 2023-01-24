@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+
 import "../Users/index.scss";
+import "../Users/userMenu.scss";
+import "../Users/filter.scss";
+
 import users from "../../assets/users.svg";
 import activeUsers from "../../assets/active-users.svg";
 import usersWithLoans from "../../assets/users-with-loans.svg";
@@ -7,102 +13,199 @@ import usersWithSavings from "../../assets/users-with-savings.svg";
 import filter from "../../assets/filter.svg";
 import { RiArrowRightSLine } from "react-icons/ri";
 import menu from "../../assets/menu.svg";
-import axios from "axios";
-
-const orgName = (data) => {
-  return (
-    <>
-      {data.map((data) => {
-        return (
-          <div key={data.id} className="content__details">
-            <p className="text">{data.orgName}</p>
-          </div>
-        );
-      })}
-    </>
-  );
-};
-
-const userName = (data) => {
-  return (
-    <>
-      {data.map((data) => {
-        return (
-          <div key={data.id} className="content__details">
-            <p className="text">{data.userName}</p>
-          </div>
-        );
-      })}
-    </>
-  );
-};
-
-const email = (data) => {
-  return (
-    <>
-      {data.map((data) => {
-        return (
-          <div key={data.id} className="content__details">
-            <p className="text">{data.email}</p>
-          </div>
-        );
-      })}
-    </>
-  );
-};
-
-const phoneNumber = (data) => {
-  return (
-    <>
-      {data.map((data) => {
-        return (
-          <div key={data.id} className="content__details">
-            <p className="text">{data.phoneNumber}</p>
-          </div>
-        );
-      })}
-    </>
-  );
-};
-
-const createdAt = (data) => {
-  return (
-    <>
-      {data.map((data) => {
-        return (
-          <div key={data.id} className="content__details">
-            <p className="text">{data.createdAt}</p>
-          </div>
-        );
-      })}
-    </>
-  );
-};
-
-const status = (data) => {
-  return (
-    <>
-      {data.map((data) => {
-        return (
-          <div key={data.id} className="content__details">
-            <p className="status">Inactive</p>
-            <img src={menu} alt="menu"></img>
-          </div>
-        );
-      })}
-    </>
-  );
-};
+import view from "../../assets/view.svg";
+import blacklist from "../../assets/blacklist.svg";
+import activate from "../../assets/activate.svg";
 
 const User = () => {
+  /* state management for user component */
   const [user, setUser] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [showMenu, setShowMenu] = useState(false);
+  const [showFilter, setShowFilter] = useState(false);
+
+  const OrgName = (data) => {
+    return (
+      <>
+        {data.map((data) => {
+          return (
+            <div key={data.id} className="content__details">
+              <p className="text">{data.orgName}</p>
+            </div>
+          );
+        })}
+      </>
+    );
+  };
+
+  const UserName = (data) => {
+    return (
+      <>
+        {data.map((data) => {
+          return (
+            <div key={data.id} className="content__details">
+              <p className="text">{data.userName}</p>
+            </div>
+          );
+        })}
+      </>
+    );
+  };
+
+  const Email = (data) => {
+    return (
+      <>
+        {data.map((data) => {
+          return (
+            <div key={data.id} className="content__details">
+              <p className="text">{data.email}</p>
+            </div>
+          );
+        })}
+      </>
+    );
+  };
+
+  const PhoneNumber = (data) => {
+    return (
+      <>
+        {data.map((data) => {
+          return (
+            <div key={data.id} className="content__details">
+              <p className="text">{data.phoneNumber}</p>
+            </div>
+          );
+        })}
+      </>
+    );
+  };
+
+  const CreatedAt = (data) => {
+    return (
+      <>
+        {data.map((data) => {
+          return (
+            <div key={data.id} className="content__details">
+              <p className="text">{data.createdAt}</p>
+            </div>
+          );
+        })}
+      </>
+    );
+  };
+
+  const Status = (data) => {
+    const UserMenu = () => {
+      return (
+        <div
+          className={showMenu ? "usermenu" : "usermenu hideMenu"}
+          onMouseLeave={() => {
+            setShowMenu(false);
+          }}
+        >
+          <Link to="/user-details-page" className="usermenu__details">
+            <img src={view} alt="view"></img>
+            <p>Vew Details</p>
+          </Link>
+
+          <Link to="/blacklist-user" className="usermenu__details">
+            <img src={blacklist} alt="view"></img>
+            <p>Blacklist User</p>
+          </Link>
+
+          <Link to="/activate-user" className="usermenu__details">
+            <img src={activate} alt="view"></img>
+            <p>Activate User</p>
+          </Link>
+        </div>
+      );
+    };
+
+    return (
+      <>
+        {data.map((data) => {
+          return (
+            <div key={data.id} className="content__details">
+              <p className="status">Inactive</p>
+              <button
+                onClick={() => {
+                  setShowMenu(true);
+                }}
+              >
+                <img src={menu} alt="menu"></img>
+              </button>
+              <UserMenu />
+            </div>
+          );
+        })}
+      </>
+    );
+  };
+
+  const Filter = () => {
+    return (
+      <form
+        className={showFilter ? "headerfilter" : "headerfilter hidefilter"}
+        onMouseLeave={() => {
+          setShowFilter(false)
+        }}
+      >
+        <div className="headerfilter__input">
+          <p>Organization</p>
+          <select placeholder="Select">
+            <option>Select</option>
+            <option>Organization</option>
+            <option>Individual</option>
+          </select>
+        </div>
+
+        <div className="headerfilter__input">
+          <p>Username</p>
+          <input
+            type="text"
+            placeholder="Username"
+          ></input>
+        </div>
+
+        <div className="headerfilter__input">
+          <p>Email</p>
+          <input type="email" placeholder="Email"></input>
+        </div>
+
+        <div className="headerfilter__input">
+          <p>Date</p>
+          <input type="date" placeholder="Date"></input>
+        </div>
+
+        <div className="headerfilter__input">
+          <p>Phone Number</p>
+          <input type="tel" placeholder="Phone Number"></input>
+        </div>
+
+        <div className="headerfilter__input">
+          <p>Status</p>
+          <select>
+            <option>Select</option>
+            <option>Active</option>
+            <option>Inactive</option>
+            <option>Pending</option>
+            <option>Blacklisted</option>
+          </select>
+        </div>
+
+        <div className="headerfilter__buttons">
+          <button>Reset</button>
+          <button>Filter</button>
+        </div>
+      </form>
+    );
+  };
 
   const handlePrevBtn = () => {
     setCurrentPage(currentPage - 1);
 
     if (currentPage === 1) {
-    setCurrentPage(itemsPerPage);
+      setCurrentPage(itemsPerPage);
     }
   };
 
@@ -111,7 +214,7 @@ const User = () => {
 
     if (currentPage === itemsPerPage) {
       setCurrentPage(firstPage);
-      }
+    }
   };
 
   const itemsPerPage = 10;
@@ -197,9 +300,16 @@ const User = () => {
           <div className="content">
             <div className="content__head">
               ORGANIZATION
-              <img className="filter" src={filter} alt="filter"></img>
+              <button
+                onClick={() => {
+                  setShowFilter(true);
+                }}
+              >
+                <img className="filter" src={filter} alt="filter"></img>
+              </button>
+              <Filter />
             </div>
-            {orgName(currentItems)}
+            {OrgName(currentItems)}
           </div>
 
           <div className="content">
@@ -207,7 +317,7 @@ const User = () => {
               USERNAME
               <img className="filter" src={filter} alt="filter"></img>
             </div>
-            {userName(currentItems)}
+            {UserName(currentItems)}
           </div>
 
           <div className="content">
@@ -215,7 +325,7 @@ const User = () => {
               EMAIL
               <img className="filter" src={filter} alt="filter"></img>
             </div>
-            {email(currentItems)}
+            {Email(currentItems)}
           </div>
 
           <div className="content">
@@ -223,7 +333,7 @@ const User = () => {
               PHONE NUMBER
               <img className="filter" src={filter} alt="filter"></img>
             </div>
-            {phoneNumber(currentItems)}
+            {PhoneNumber(currentItems)}
           </div>
 
           <div className="content">
@@ -231,7 +341,7 @@ const User = () => {
               DATE JOINED
               <img className="filter" src={filter} alt="filter"></img>
             </div>
-            {createdAt(currentItems)}
+            {CreatedAt(currentItems)}
           </div>
 
           <div className="content">
@@ -239,7 +349,7 @@ const User = () => {
               STATUS
               <img className="filter" src={filter} alt="filter"></img>
             </div>
-            {status(currentItems)}
+            {Status(currentItems)}
           </div>
         </div>
       </div>

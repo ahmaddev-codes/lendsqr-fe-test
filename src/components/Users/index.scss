@@ -10,6 +10,7 @@
   font-family: $workSans;
   color: $textColor;
   width: max-content;
+  max-width: 78vw;
   height: 100vh;
   overflow-y: scroll;
   top: 0;
@@ -78,9 +79,17 @@
           gap: 0.5rem;
           padding-bottom: 1rem;
 
-          .filter {
-            width: 1rem;
-            height: auto;
+          button {
+            position: relative;
+            border: none;
+            background: $white;
+            width: max-content;
+            cursor: pointer;
+
+            .filter {
+              width: 1rem;
+              height: auto;
+            }
           }
         }
 
@@ -94,15 +103,23 @@
             font-size: 0.875rem;
             font-weight: 400;
           }
-        }
-      }
 
-      .status {
-        background: $inactive;
-        padding: 0.2rem 0.5rem;
-        border-radius: 2rem;
-        color: $white;
-        width: max-content;
+          .status {
+            background: $inactive;
+            padding: 0.2rem 0.5rem;
+            border-radius: 2rem;
+            color: $white;
+            width: max-content;
+          }
+
+          button {
+            position: relative;
+            border: none;
+            background: $white;
+            width: max-content;
+            cursor: pointer;
+          }
+        }
       }
     }
   }
