@@ -15,6 +15,7 @@
   overflow-y: scroll;
   box-shadow: $shadow;
   border: $border;
+  z-index: 3;
 
   &__header {
     display: flex;
