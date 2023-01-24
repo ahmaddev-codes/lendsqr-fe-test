@@ -19,7 +19,6 @@ const Login = () => {
           </div>
 
           <img className="mobile" src={vector} alt="vector"></img>
-
           <Form />
         </div>
       </div>

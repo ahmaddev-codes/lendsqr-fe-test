@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {Link} from 'react-router-dom'
 import "./Login.scss";
 
 const Form = ({login}) => {
@@ -47,9 +48,7 @@ const Form = ({login}) => {
 
       <a href="/#">FORGOT PASSWORD?</a>
 
-      <button type="submit" onClick={() => login.push('/dashboard')}>LOG IN</button>
-
-      <a href="/dashboard">GO TO DASHBOARD</a>
+      <Link className="link" to="/dashboard" type="submit">LOG IN</Link>
     </form>
   );
 };
