@@ -1,17 +1,28 @@
 import "./App.scss";
-import { Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout/index";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Dashboard from '../src/components/Dashboard/index'
 import Users from "./components/Users/index";
+import UserDetailsPage from "../src/components/UserDetailsPage/index";
 
 function App() {
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Users />}></Route>
-        </Route>
-      </Routes>
-    </>
+    <Router>
+      <div className="App">
+        <Dashboard />
+
+        <Routes>
+        <Route
+            path="/users"
+            exact
+            element={<Users />}
+          ></Route>
+          <Route
+            path="/user-details-page"
+            element={<UserDetailsPage />}
+          ></Route>
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
