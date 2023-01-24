@@ -1,0 +1,195 @@
+@import "../../variables.scss";
+@import "../../mixins.scss";
+
+.userdetails {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 9rem 2rem 2rem;
+  font-family: $workSans;
+  color: $textColor;
+  width: 100%;
+  max-width: 78vw;
+  height: 100vh;
+  top: 0;
+  left: 22%;
+  overflow-y: scroll;
+
+  a {
+    display: flex;
+    gap: 0.5rem;
+    font-weight: 600;
+    border: none;
+    background: $white;
+    color: $inactive;
+    width: max-content;
+    cursor: pointer;
+  }
+
+  &__subheader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      font-family: $workSans;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+
+      button {
+        padding: 0.7rem;
+        width: max-content;
+        background: $white;
+        border-radius: 0.5rem;
+        font-family: $workSans;
+        font-weight: 600;
+        font-size: 0.8rem;
+        letter-spacing: 0.05rem;
+
+        &:first-child {
+          border: 1px solid $blacklisted;
+          color: $blacklisted;
+        }
+
+        &:last-child {
+          border: 1px solid $buttonColor;
+          color: $buttonColor;
+        }
+      }
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 2rem 2rem 0;
+    box-shadow: $shadowDeep;
+    border-radius: 0.5rem;
+    gap: 2rem;
+
+    &__details {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    img {
+      width: 5rem;
+      height: auto;
+    }
+
+    .text {
+      padding: 0 2rem;
+
+      &:nth-of-type(1) {
+        padding: 0 2rem 0 1rem;
+      }
+
+      &:nth-of-type(2) {
+        border-right: 2px solid $paginationBg;
+        border-left: 2px solid $paginationBg;
+      }
+
+      h4 {
+        margin: 0;
+      }
+
+      p,
+      svg {
+        margin: 0.5rem 0 0 0;
+      }
+
+      p {
+        font-size: 0.875rem;
+      }
+
+      .rank {
+        display: flex;
+        gap: 0.2rem;
+        color: $pending;
+      }
+    }
+
+    &__link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      a {
+        color: $inactive;
+        font-weight: 400;
+        font-size: 0.875rem;
+        transition: all 300ms ease;
+        border-bottom: 2px solid transparent;
+        padding-bottom: 0.5rem;
+
+        &.active {
+          color: $buttonColor;
+          border-bottom: 2px solid $buttonColor;
+        }
+
+        &:hover {
+          color: $buttonColor;
+          border-bottom: 2px solid $buttonColor;
+        }
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem 2rem 3rem;
+    border-radius: 0.5rem;
+    box-shadow: $shadowDeep;
+
+    &__heading {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+
+      &:not(:last-of-type) {
+        padding-bottom: 2rem;
+        border-bottom: 1px solid $divider;
+      }
+
+      .texts {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        row-gap: 2rem;
+        align-items: flex-start;
+        width: 100%;
+
+        &.first {
+          grid-template-columns: repeat(5, 1fr);
+        }
+
+        p {
+          font-size: 0.675rem;
+          margin: 0;
+          color: $inactive;
+
+          &:last-child {
+            margin-top: 0.5rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+          }
+        }
+      }
+    }
+  }
+}

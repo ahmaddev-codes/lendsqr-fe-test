@@ -1,0 +1,182 @@
+@import "../../variables.scss";
+@import "../../mixins.scss";
+
+.login {
+  padding: 3rem;
+  color: $textColor;
+  background-color: $white;
+  font-family: $avenirNext;
+  letter-spacing: 0.05rem;
+
+  @include breakpoint-up(large) {
+    padding: 5rem;
+  }
+
+  .logo {
+    width: 6.875rem;
+    height: auto;
+
+    @include breakpoint-up(large) {
+      width: 10.875rem;
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 3rem;
+    gap: 2rem;
+
+    @include breakpoint-up(large) {
+      grid-template-columns: 1fr 1fr;
+
+      padding-top: 5rem;
+    }
+
+    .details {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+
+      @include breakpoint-up(large) {
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+
+      .mobile {
+        width: 25rem;
+        height: auto;
+
+        @include breakpoint-up(large) {
+          display: none;
+        }
+      }
+
+      &__header {
+        padding-bottom: 2rem;
+        h1 {
+          font-family: $avenirNext;
+          font-weight: 700;
+          font-size: 2rem;
+          color: $textColor;
+          margin: 0;
+
+          @include breakpoint-up(large) {
+            font-size: 2.5rem;
+          }
+        }
+
+        p {
+          font-family: $avenirNext;
+          font-weight: 400;
+          font-size: 1rem;
+          color: $inactive;
+        }
+      }
+    }
+
+    .desktop {
+      display: none;
+
+      @include breakpoint-up(large) {
+        display: block;
+        width: 37.5rem;
+        height: auto;
+      }
+    }
+  }
+}
+
+/* ----- Form style ----- */
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 80%;
+  gap: 0.8rem;
+
+  input {
+    width: 100%;
+    height: 2rem;
+    font-size: 1rem;
+    font-family: $avenirNext;
+    letter-spacing: 0.1rem;
+    color: #545f7d;
+    border: 1px solid #545f7d;
+    border-radius: 5px;
+    padding: 1.2rem;
+    outline: none;
+
+    :nth-of-type(2) {
+      position: relative;
+    }
+
+    &::placeholder {
+      font-size: 0.875rem;
+      color: #545f7d;
+      opacity: 0.6;
+    }
+
+    + .message {
+      display: none;
+      font-family: $avenirNext;
+      font-weight: 400;
+      font-size: 0.875rem;
+      margin: 0;
+
+      @include breakpoint-up(large) {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .showPassword {
+    position: absolute;
+    color: $buttonColor;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0;
+    right: 20%;
+    cursor: pointer;
+
+    @include breakpoint-up(large) {
+      font-weight: 600;
+    }
+  }
+
+  a {
+    font-family: $avenirNext;
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: $buttonColor;
+    margin-top: 1rem;
+    margin-bottom: -1rem;
+    transition: all 200ms ease;
+  }
+
+  .link {
+    width: 100%;
+    height: auto;
+    font-size: 1rem;
+    font-family: $avenirNext;
+    background: $buttonColor;
+    color: $white;
+    text-align: center;
+    margin-top: 1rem;
+    border-color: $buttonColor;
+    border-radius: 5px;
+    padding: 1rem;
+    transition: all 300ms ease;
+
+    &:hover {
+      width: 100%;
+      opacity: 0.8;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+/*--- Style Guide ---*/
+
+// font - Avenir Next & Work Sans
+@import url('https://fonts.cdnfonts.com/css/avenir-next-lt-pro');
+@import url('https://fonts.cdnfonts.com/css/work-sans');
+
+// font family
+$avenirNext: 'Avenir Next LT Pro', sans-serif;
+$workSans: 'Work Sans', sans-serif;
+
+// Color palette
+$white: #ffffff;
+$black: #000000;
+$textColor: #213F7D;
+$buttonColor: #39CDCC;
+$buttonHover: #39CDCC10;
+$containerBg: #FBFBFB;
+$paginationBg: #213F7D1A;
+
+$divider: #21407d10;
+
+$active: #39CD62;
+$inactive: #545F7D;
+$pending: #E9B200;
+$blacklisted: #E4033B;
+$logOutBg: #e4033b10;
+
+$shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+$shadowDeep: 3px 5px 20px rgba(0, 0, 0, 0.08);
+$border: 1px solid rgba(33, 63, 125, 0.06);

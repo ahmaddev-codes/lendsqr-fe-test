@@ -1,0 +1,39 @@
+@import "../../variables.scss";
+@import "../../mixins.scss";
+
+.usermenu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: max-content;
+  gap: 0.4rem;
+  padding: 0.8rem;
+  background: $white;
+  color: $textColor;
+  border-radius: 0.5rem;
+  box-shadow: $shadowDeep;
+  margin-top: 1rem;
+
+  &.hideMenu {
+    display: none;
+  }
+
+
+  &__details {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    img {
+      width: 1rem;
+      height: auto;
+    }
+
+    p {
+      font-size: 0.675rem;
+      margin: 0;
+    }
+  }
+}

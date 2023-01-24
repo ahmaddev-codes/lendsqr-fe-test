@@ -1,0 +1,207 @@
+@import "../../variables.scss";
+@import "../../mixins.scss";
+
+.users {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 7rem 2rem 2rem;
+  font-family: $workSans;
+  color: $textColor;
+  width: max-content;
+  max-width: 78vw;
+  height: 100vh;
+  overflow-y: scroll;
+  top: 0;
+  left: 22%;
+  scrollbar-color: $white;
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: $workSans;
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    width: inherit;
+
+    .card {
+      padding: 1.4rem;
+      background: $white;
+      border-radius: 5px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      box-shadow: $shadow;
+      border: $border;
+      cursor: pointer;
+      transition: all 200ms ease;
+
+      &:hover {
+        box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      h2 {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__board {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    border: $border;
+    box-shadow: $shadow;
+    padding: 2rem;
+
+    &__content {
+      display: grid;
+      grid-template-columns: repeat(6, max-content);
+      gap: 1rem;
+      align-items: flex-start;
+      font-size: 0.75rem;
+      font-weight: 600;
+      width: 100%;
+      border-radius: 5px;
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        &__head {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding-bottom: 1rem;
+
+          button {
+            position: relative;
+            border: none;
+            background: $white;
+            width: max-content;
+            cursor: pointer;
+
+            .filter {
+              width: 1rem;
+              height: auto;
+            }
+          }
+        }
+
+        &__details {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 2rem;
+
+          .text {
+            font-size: 0.875rem;
+            font-weight: 400;
+          }
+
+          .status {
+            background: $inactive;
+            padding: 0.2rem 0.5rem;
+            border-radius: 2rem;
+            color: $white;
+            width: max-content;
+          }
+
+          button {
+            position: relative;
+            border: none;
+            background: $white;
+            width: max-content;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: -1rem;
+
+    .page-number {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      width: max-content;
+      height: auto;
+
+      .p2 {
+        font-weight: 600;
+      }
+
+      .current {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        width: max-content;
+        background: $paginationBg;
+        padding: 0.5rem;
+        font-weight: 600;
+        border-radius: 0.2rem;
+
+        p {
+          margin: 0;
+        }
+
+        svg {
+          transform: rotate(90deg);
+        }
+      }
+    }
+
+    .pagination {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+      margin: 0;
+
+      .arrow:first-child,
+      .arrow:last-child {
+        background: $paginationBg;
+        color: $textColor;
+        font-weight: 600;
+        width: max-content;
+        height: auto;
+        padding: 0.2rem;
+        border: none;
+        border-radius: 0.2rem;
+        cursor: pointer;
+      }
+
+      .arrow:first-child {
+        svg {
+          transform: rotate(180deg);
+        }
+      }
+
+      &__number {
+        font-weight: 600;
+        padding: 0.5rem;
+        opacity: 0.5;
+        cursor: pointer;
+        transition: all 300ms ease;
+
+        &:hover {
+          opacity: 1;
+        }
+
+        &.active {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
